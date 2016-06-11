@@ -46,4 +46,20 @@ public class Pelota {
     public void setHeight(int height) {
         this.height = height;
     }
+
+    public void rebotaPelota(){
+        int Dx = 1;
+        int Dy = 1;
+
+        while(true){
+            x+=Dx;
+            y+=Dy;
+
+            if ((x + width) >= this.getWidth())
+                Dx*= -1;
+
+            if ((y+height) >= this.getHeight())
+                Dy*= -1;
+        }
+    }
 }
