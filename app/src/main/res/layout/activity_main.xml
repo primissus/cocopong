@@ -7,10 +7,41 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#000000"
     tools:context=".Activities.MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="PONG"
+        android:textColor="#FFFF00"
+        android:textSize="45dp"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"
+        android:id="@+id/PONG"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:text="Crear partida"
+        android:textSize="20dp"
+        android:textColor="#FFFF00"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/PONG"
+        android:paddingTop="80dp"
+        android:id="@+id/btnCrearPartida"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:textColor="#FFFF00"
+        android:text="Unirse a una parida"
+        android:textSize="20dp"
+        android:layout_below="@+id/btnCrearPartida"
+        android:id="@+id/btnUnirPartida"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="20dp"/>
+
 </RelativeLayout>
