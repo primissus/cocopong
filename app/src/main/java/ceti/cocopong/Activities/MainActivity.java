@@ -1,7 +1,9 @@
-package ceti.cocopong;
+package ceti.cocopong.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import ceti.cocopong.R;
 
 public class MainActivity extends AppCompatActivity {
 
