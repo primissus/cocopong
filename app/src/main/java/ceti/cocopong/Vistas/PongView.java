@@ -7,13 +7,7 @@ import android.view.SurfaceView;
 /**
  * Created by law on 11/06/16.
  */
-<<<<<<< HEAD
-public class PongView extends SurfaceView {
-
-
-=======
 public class PongView extends SurfaceView{
->>>>>>> bf895fd9b29c78243fecae86d72f543107d8093c
     public PongView(Context context) {
         super(context);
     }
@@ -21,10 +15,4 @@ public class PongView extends SurfaceView{
     public PongView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> bf895fd9b29c78243fecae86d72f543107d8093c
 }

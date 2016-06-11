@@ -9,6 +9,8 @@ public class Pelota {
     private int y;
     private int width;
     private int height;
+    private int dx;
+    private int dy;
 
     public Pelota(int width, int height) {
         this.width = width;
@@ -47,19 +49,23 @@ public class Pelota {
         this.height = height;
     }
 
-    public void rebotaPelota(){
-        int Dx = 1;
-        int Dy = 1;
+    public void rebotaPelota(int gameWidth, int gameHeight) {
+        if ((x + width) >= gameWidth || x <= 0) {
+            dx += -1;
+            if (x < 0)
+                x = 0;
+            if (x + width > gameWidth)
+                x = gameWidth - this.height;
+        }
 
-        while(true){
-            x+=Dx;
-            y+=Dy;
-
-            if ((x + width) >= this.getWidth())
-                Dx*= -1;
-
-            if ((y+height) >= this.getHeight())
-                Dy*= -1;
+        if ((y + height) >= this.getHeight() || y <= 0) {
+            y += -1;
+            if (y < 0) {
+                y = 0;
+            }
+            if (y + width > gameHeight) {
+                y = gameHeight - height;
+            }
         }
     }
 }
