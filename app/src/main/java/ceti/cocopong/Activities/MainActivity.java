@@ -26,10 +26,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.btnCrearPartida){
+        if(v.getId() == R.id.btnCrearPartida){      //Metodo del boton crear partida
 
         }
-        else if(v.getId() == R.id.btnUnirPartida){
+        else if(v.getId() == R.id.btnUnirPartida){  //Método del boton unir partida
 
         }
     }

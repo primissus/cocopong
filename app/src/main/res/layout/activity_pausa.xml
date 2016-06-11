@@ -7,6 +7,42 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#000000"
     tools:context="Activities.PausaActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnReanudar"
+        android:background="#000000"
+        android:textColor="#FFFF00"
+        android:text="Reanudar"
+        android:textSize="35dp"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="15dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnReiniciar"
+        android:background="#000000"
+        android:textColor="#FFFF00"
+        android:text="Reiniciar"
+        android:textSize="35dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btnReanudar"
+        android:paddingTop="15dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSalir"
+        android:background="#000000"
+        android:textColor="#FFFF00"
+        android:text="Salir"
+        android:textSize="35dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btnReiniciar"
+        android:paddingTop="15dp"/>
 
 </RelativeLayout>
