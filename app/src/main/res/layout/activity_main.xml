@@ -13,7 +13,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PONG"
+        android:text="COCOPONG"
         android:textColor="#FFFF00"
         android:textSize="45dp"
         android:layout_centerHorizontal="true"
@@ -42,6 +42,6 @@
         android:layout_below="@+id/btnCrearPartida"
         android:id="@+id/btnUnirPartida"
         android:layout_centerHorizontal="true"
-        android:paddingTop="20dp"/>
+        android:paddingTop="40dp"/>
 
 </RelativeLayout>
