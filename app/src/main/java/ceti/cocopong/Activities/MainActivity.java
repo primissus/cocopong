@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button btnCrearPartida;
     private Button btnUnirPartida;
+    private Button btnSalir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,17 +24,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnCrearPartida = (Button) findViewById(R.id.btnCrearPartida);
         btnUnirPartida = (Button) findViewById(R.id.btnUnirPartida);
+        btnSalir = (Button) findViewById(R.id.btnSalir);
 
         btnUnirPartida.setOnClickListener(this);
         btnCrearPartida.setOnClickListener(this);
+        btnSalir.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         Intent intent = null;
-        if(v.getId() == R.id.btnCrearPartida)      //Metodo del boton crear partida
+        if(v.getId()== R.id.btnSalir)
+            finish();                                   //Terminar aplicacion
+        else if(v.getId() == R.id.btnCrearPartida)      //Ir a crear partida
             intent = new Intent(this,CrearPartidaActivity.class);
-        else if(v.getId() == R.id.btnUnirPartida)  //Método del boton unir partida
+        else if(v.getId() == R.id.btnUnirPartida)       //Ir a unir partida
             intent = new Intent(this,UnirPartidaActivity.class);
         startActivity(intent);
         finish();

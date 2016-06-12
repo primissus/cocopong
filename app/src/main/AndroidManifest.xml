@@ -25,13 +25,19 @@
         <activity
             android:name=".Activities.PausaActivity"
             android:noHistory="true"
-            android:theme="@style/NoTitle"/>
-        <activity android:name=".Activities.CrearPartidaActivity"
+            android:theme="@style/NoTitle" />
+        <activity
+            android:name=".Activities.CrearPartidaActivity"
+            android:noHistory="true"
+            android:theme="@style/NoTitle" />
+        <activity
+            android:name=".Activities.UnirPartidaActivity"
+            android:noHistory="true"
+            android:theme="@style/NoTitle" />
+        <activity
+            android:name=".Activities.ResultadoActivity"
             android:noHistory="true"
             android:theme="@style/NoTitle"/>
-        <activity android:name=".Activities.UnirPartidaActivity"
-            android:noHistory="true"
-            android:theme="@style/NoTitle"></activity>
     </application>
 
 </manifest>
