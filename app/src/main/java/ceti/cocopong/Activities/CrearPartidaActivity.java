@@ -55,10 +55,10 @@ public class CrearPartidaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 createConection(txtNombrePartida.getText().toString());
-                intent = new Intent(CrearPartidaActivity.this, MainActivity.class);
-                intent.putExtra("Usuario", txtNombreUsuario.getText().toString());
-                startActivity(intent);
-                finish();
+//                intent = new Intent(CrearPartidaActivity.this, MainActivity.class);
+//                intent.putExtra("Usuario", txtNombreUsuario.getText().toString());
+//                startActivity(intent);
+//                finish();
             }
         });
 

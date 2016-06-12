@@ -22,6 +22,7 @@ public class HotspotsAdapter extends BaseAdapter{
 
     public HotspotsAdapter(UnirPartidaActivity activity, List<ScanResult> results) {
         this.results = results;
+        this.activity = activity;
     }
 
     @Override
@@ -45,7 +46,7 @@ public class HotspotsAdapter extends BaseAdapter{
         View view = inflater.inflate(R.layout.partida_item, null, true);
 
         TextView txtNombre = (TextView) view.findViewById(R.id.txtHostpotItem);
-
+        txtNombre.setText(results.get(i).SSID.replaceFirst("Ptr",""));
         return view;
     }
 
