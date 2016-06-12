@@ -5,55 +5,36 @@ import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import ceti.cocopong.Activities.PongActivity;
+import ceti.cocopong.Controladores.ClientThread;
+import ceti.cocopong.Controladores.ServerThread;
+import ceti.cocopong.Entidades.Paleta;
+import ceti.cocopong.Entidades.Pelota;
+
 /**
  * Created by law on 11/06/16.
  */
 public class PongView extends SurfaceView{
     private SurfaceHolder holder;
+    private Pelota pelota;
+    private Paleta paleta;
+
+    private String user;
+    private boolean isServer;
+
+    private PongActivity activity;
+
+    private ServerThread server;
+    private ClientThread client;
 
     public PongView(Context context) {
         super(context);
-        holder = getHolder();
-        holder.addCallback(new SurfaceHolder.Callback() {
-            @Override
-            public void surfaceCreated(SurfaceHolder holder) {
-                init();
-            }
-
-            @Override
-            public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
-            }
-
-            @Override
-            public void surfaceDestroyed(SurfaceHolder holder) {
-
-            }
-        });
+        activity = (PongActivity) context;
+        user = activity.getIntent().getStringExtra("Usuario");
+        isServer = activity.getIntent().getBooleanExtra("isServer", false);
     }
 
-    public PongView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        holder = getHolder();
-        holder.addCallback(new SurfaceHolder.Callback() {
-            @Override
-            public void surfaceCreated(SurfaceHolder holder) {
-                init();
-            }
-
-            @Override
-            public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
-            }
-
-            @Override
-            public void surfaceDestroyed(SurfaceHolder holder) {
-
-            }
-        });
-    }
-
-    private void init(){
+    public void init(){
 
     }
 

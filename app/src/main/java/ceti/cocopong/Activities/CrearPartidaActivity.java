@@ -10,8 +10,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-
 import java.util.ArrayList;
 
 import ceti.cocopong.Controladores.ApManager;
@@ -55,10 +53,11 @@ public class CrearPartidaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 createConection(txtNombrePartida.getText().toString());
-//                intent = new Intent(CrearPartidaActivity.this, MainActivity.class);
-//                intent.putExtra("Usuario", txtNombreUsuario.getText().toString());
-//                startActivity(intent);
-//                finish();
+                intent = new Intent(CrearPartidaActivity.this, MainActivity.class);
+                intent.putExtra("Usuario", txtNombreUsuario.getText().toString());
+                intent.putExtra("isServer", true);
+                startActivity(intent);
+                finish();
             }
         });
 

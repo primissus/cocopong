@@ -142,7 +142,11 @@ public class UnirPartidaActivity extends AppCompatActivity implements ListView.O
                 public void onClick(DialogInterface dialog, int i) {
                     if (connectToNetwork(SSID) && getConnectedNetwork().equals("\"" + SSID + "\"")) {
                         Toast.makeText(UnirPartidaActivity.this, "Conectado", Toast.LENGTH_SHORT).show();
-                        //conexionActivity.startService(intento);
+                        Intent intent = new Intent(UnirPartidaActivity.this, PongActivity.class);
+                        intent.putExtra("Usuario", txtUsername.getText().toString());
+                        intent.putExtra("isServer", false);
+                        startActivity(intent);
+                        finish();
                     } else
                         Toast.makeText(UnirPartidaActivity.this, "Error al conectar", Toast.LENGTH_SHORT).show();
                     dialog.dismiss();

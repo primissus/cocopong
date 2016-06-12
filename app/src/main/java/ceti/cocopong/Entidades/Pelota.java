@@ -68,4 +68,9 @@ public class Pelota {
             }
         }
     }
+
+    public void cambiaPosicion(){
+        x += dx;
+        y += dy;
+    }
 }
