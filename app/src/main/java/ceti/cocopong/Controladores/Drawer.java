@@ -1,6 +1,7 @@
 package ceti.cocopong.Controladores;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 
 import ceti.cocopong.Entidades.Paleta;
@@ -18,6 +19,9 @@ public class Drawer {
     public Drawer(Pelota pelota, Paleta paleta) {
         this.pelota = pelota;
         this.paleta = paleta;
+        generalPaint = new Paint();
+        generalPaint.setColor(Color.WHITE);
+        generalPaint.setAntiAlias(true);
     }
 
     public void draw(Canvas canvas){

@@ -33,6 +33,12 @@ public class PongActivity extends AppCompatActivity {
         try{
             switch(json.getInt("code")){
                 case 0:     //Turno
+                    if(json.getBoolean("turn")){
+
+                    }
+                    else{
+
+                    }
                     break;
                 case 1:     //Posicion pelota contrario
                     break;

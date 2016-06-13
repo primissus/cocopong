@@ -25,7 +25,6 @@ public class ClientThread extends Thread {
 
     @Override
     public void run() {
-        this.pongActivity = pongActivity;
         try {
             socket = new Socket("192.168.137.1",8188);
             pongActivity.getPongView().init();

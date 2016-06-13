@@ -97,8 +97,34 @@ public class PongView extends SurfaceView{
         Random rnd = new Random();
         pelota.setX(rnd.nextInt(this.getWidth()*9/10));
         pelota.setY(0);
+        pelota.setDx((this.getWidth()*6/100)*((rnd.nextBoolean())?1:-1));
+        pelota.setDy(this.getHeight()*4/100);
+    }
+
+    private void placePelota(int x){
+        pelota.setX(x);
+        pelota.setY(0);
         pelota.setDx(this.getWidth()*6/100);
-        //pelota.setDx(this.get);
+        pelota.setDy(this.getHeight()*4/100);
+    }
+
+    public void sendNextTurn(){
+        JSONObject json = new JSONObject();
+        try {
+            json.put("code",1);
+            json.put("xpos",pelota.getX()/getWidth());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void initPelota(boolean turn){
+        if(turn){
+
+        }
+        else{
+
+        }
     }
 
     @Override

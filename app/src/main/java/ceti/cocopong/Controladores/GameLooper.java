@@ -27,6 +27,7 @@ public class GameLooper extends Thread {
         while(running){
             if(pelota.isVisible()){
 
+                //pelota.rebotaPelota(view.getWidth(), view.getHeight(), paleta)
             }
             int movement;
             if((movement = sensor.getInclinacion())!=0)
