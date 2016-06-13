@@ -45,4 +45,21 @@ public class Paleta {
             paleta.right-=movement*speed;
         }
     }
+
+    public int getX(){
+        return (int) paleta.left;
+    }
+
+    public int getY(){
+        return (int) paleta.top;
+    }
+
+    public int getWidth(){
+        return (int) paleta.width();
+    }
+
+    public int getHeight(){
+        return  (int) paleta.height();
+    }
+
 }

@@ -93,6 +93,14 @@ public class PongView extends SurfaceView{
             client.setRunning(false);
     }
 
+    private void placePelota(){
+        Random rnd = new Random();
+        pelota.setX(rnd.nextInt(this.getWidth()*9/10));
+        pelota.setY(0);
+        pelota.setDx(this.getWidth()*6/100);
+        //pelota.setDx(this.get);
+    }
+
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
