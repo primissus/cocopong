@@ -13,6 +13,8 @@ import ceti.cocopong.Entidades.Pelota;
 public class Drawer {
 
     private Paint generalPaint;
+    private Paint timePaint;
+    private Paint textPaint;
     private Pelota pelota;
     private Paleta paleta;
 
@@ -22,11 +24,35 @@ public class Drawer {
         generalPaint = new Paint();
         generalPaint.setColor(Color.WHITE);
         generalPaint.setAntiAlias(true);
+        timePaint = new Paint();
+        generalPaint.setColor(Color.WHITE);
+        generalPaint.setAntiAlias(true);
+        generalPaint.setTextSize(pelota.getHeight()*7);
+        generalPaint.setTextAlign(Paint.Align.CENTER);
+        textPaint = new Paint();
+        textPaint.setColor(Color.YELLOW);
+        textPaint.setAntiAlias(true);
+        textPaint.setTextAlign(Paint.Align.RIGHT);
+        textPaint.setTextSize(pelota.getWidth()/2);
     }
 
     public void draw(Canvas canvas){
         canvas.drawRGB(0,0,0);
         canvas.drawRect(paleta.getPaleta(),generalPaint);
-        canvas.drawCircle(pelota.getX()+pelota.getWidth()/2,pelota.getY()+pelota.getHeight()/2,pelota.getWidth()/2,generalPaint);
+        if(pelota.isVisible())
+            canvas.drawCircle(pelota.getX()+pelota.getWidth()/2,pelota.getY()+pelota.getHeight()/2,pelota.getWidth()/2,generalPaint);
+        else
+            canvas.drawRect(pelota.getX(),0, pelota.getX()+pelota.getWidth(), pelota.getHeight()/5, generalPaint);
+    }
+
+
+    public void drawTime(Canvas canvas, int time){
+        canvas.drawRGB(0,0,0);
+        canvas.drawText(String.valueOf(time), pelota.getHeight(), paleta.getWidth()*5/2, timePaint);
+    }
+
+    public void drawPoints(Canvas canvas,int points, int openentPoints){
+        String text = String.valueOf(points)+":"+String.valueOf(openentPoints);
+        canvas.drawText(text,paleta.getWidth()*5, textPaint.getTextSize(), textPaint);
     }
 }

@@ -33,16 +33,16 @@ public class PongActivity extends AppCompatActivity {
         try{
             switch(json.getInt("code")){
                 case 0:     //Turno
-                    if(json.getBoolean("turn")){
-
-                    }
-                    else{
-
-                    }
+                    pongView.initPelota(json.getBoolean("turn"));
                     break;
                 case 1:     //Posicion pelota contrario
+                    pongView.setPelotaX(json.getInt("xPos"));
                     break;
                 case 2:     //Recibir pelota
+                    pongView.receivePelota(json.getInt("xPos"));
+                    break;
+                case 3:
+                    pongView.setPuntosOpenente(pongView.getPuntosOpenente()+1);
             }
         }
         catch(JSONException e){

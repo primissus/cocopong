@@ -15,6 +15,8 @@ public class GameLooper extends Thread {
     private SensorPong sensor;
     private boolean running;
 
+
+
     public GameLooper(PongView view, Pelota pelota, Paleta paleta) {
         this.view = view;
         this.pelota = pelota;
@@ -26,8 +28,25 @@ public class GameLooper extends Thread {
     public void run() {
         while(running){
             if(pelota.isVisible()){
-
-                //pelota.rebotaPelota(view.getWidth(), view.getHeight(), paleta)
+                pelota.cambiaPosicion();
+                switch(pelota.rebotaPelota(view.getWidth(), view.getHeight(), paleta)){
+                    case 0:
+                        view.sendXPelota(pelota.getX()/view.getWidth());
+                        break;
+                    case 1:
+                        view.sendPelota();
+                        pelota.setVisible(false);
+                        break;
+                    case 2:
+                        view.setPuntos(view.getPuntos()+1);
+                        view.sendPunto();
+                        view.initPelota(true);
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                }
             }
             int movement;
             if((movement = sensor.getInclinacion())!=0)
