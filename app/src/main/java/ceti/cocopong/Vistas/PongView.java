@@ -48,6 +48,7 @@ public class PongView extends SurfaceView{
 
     public PongView(Context context) {
         super(context);
+        holder = getHolder();
         activity = (PongActivity) context;
         user = activity.getIntent().getStringExtra("Usuario");
         isServer = activity.getIntent().getBooleanExtra("isServer", false);
@@ -61,9 +62,11 @@ public class PongView extends SurfaceView{
         }
         else{
             client = new ClientThread(activity);
-            server.start();
+            client.start();
         }
+        looper = new GameLooper(this, pelota, paleta);
     }
+
 
     public void init(){
         if(isServer){
@@ -73,7 +76,6 @@ public class PongView extends SurfaceView{
             initPelota(pelota.isVisible());
         }
         drawer = new Drawer(pelota,paleta);
-        looper = new GameLooper(this, pelota, paleta);
         showTimer();
     }
 
@@ -146,6 +148,7 @@ public class PongView extends SurfaceView{
             server.setRunning(false);
         else
             client.setRunning(false);
+
     }
 
     private void placePelota(){
@@ -215,5 +218,9 @@ public class PongView extends SurfaceView{
 
     public void setPuntosOpenente(int puntosOpenente) {
         this.puntosOpenente = puntosOpenente;
+    }
+
+    public GameLooper getLooper() {
+        return looper;
     }
 }

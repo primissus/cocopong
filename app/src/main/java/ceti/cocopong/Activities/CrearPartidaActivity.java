@@ -53,7 +53,7 @@ public class CrearPartidaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 createConection(txtNombrePartida.getText().toString());
-                intent = new Intent(CrearPartidaActivity.this, MainActivity.class);
+                intent = new Intent(CrearPartidaActivity.this, PongActivity.class);
                 intent.putExtra("Usuario", txtNombreUsuario.getText().toString());
                 intent.putExtra("isServer", true);
                 startActivity(intent);
@@ -71,7 +71,7 @@ public class CrearPartidaActivity extends AppCompatActivity {
     }
 
     public void stopConexion(){
-        while(apManager.isApOn())
+        if(apManager.isApOn())
             apManager.configApState(null);
     }
 

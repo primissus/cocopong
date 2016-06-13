@@ -6,6 +6,8 @@ import org.json.JSONObject;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 
 import ceti.cocopong.Activities.PongActivity;
@@ -26,7 +28,10 @@ public class ClientThread extends Thread {
     @Override
     public void run() {
         try {
-            socket = new Socket("192.168.137.1",8188);
+            //socket = new Socket("192.168.43.1",8888);
+            socket = new Socket();
+            socket.bind(null);
+            socket.connect((new InetSocketAddress("192.168.43.1", 8189)), 500);
             pongActivity.getPongView().init();
             while(running){
                 String data = receiveData();
@@ -71,5 +76,13 @@ public class ClientThread extends Thread {
 
     public void setRunning(boolean running) {
         this.running = running;
+    }
+
+    public void close(){
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

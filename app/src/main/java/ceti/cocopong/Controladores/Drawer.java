@@ -25,6 +25,9 @@ public class Drawer {
         generalPaint.setColor(Color.WHITE);
         generalPaint.setAntiAlias(true);
         timePaint = new Paint();
+        timePaint.setColor(Color.WHITE);
+        timePaint.setAntiAlias(true);
+        timePaint.setTextSize(80);
         generalPaint.setColor(Color.WHITE);
         generalPaint.setAntiAlias(true);
         generalPaint.setTextSize(pelota.getHeight()*7);
@@ -48,7 +51,7 @@ public class Drawer {
 
     public void drawTime(Canvas canvas, int time){
         canvas.drawRGB(0,0,0);
-        canvas.drawText(String.valueOf(time), pelota.getHeight(), paleta.getWidth()*5/2, timePaint);
+        canvas.drawText(String.valueOf(time), pelota.getHeight(), paleta.getWidth()*5/2+timePaint.getTextSize(), timePaint);
     }
 
     public void drawPoints(Canvas canvas,int points, int openentPoints){

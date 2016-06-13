@@ -21,7 +21,7 @@ public class GameLooper extends Thread {
         this.view = view;
         this.pelota = pelota;
         this.paleta = paleta;
-        sensor = new SensorPong();
+
     }
 
     @Override
@@ -57,5 +57,9 @@ public class GameLooper extends Thread {
 
     public void setRunning(boolean running) {
         this.running = running;
+    }
+
+    public void setSensor(SensorPong sensor) {
+        this.sensor = sensor;
     }
 }

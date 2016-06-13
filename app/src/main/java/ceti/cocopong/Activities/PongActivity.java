@@ -1,14 +1,19 @@
 package ceti.cocopong.Activities;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.view.WindowManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import ceti.cocopong.Controladores.SensorPong;
 import ceti.cocopong.R;
 import ceti.cocopong.Vistas.PongView;
 
@@ -17,16 +22,38 @@ public class PongActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private PongView pongView;
     private boolean exit;
+    private int currentApiVersion = android.os.Build.VERSION.SDK_INT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        final int flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        if(currentApiVersion >= Build.VERSION_CODES.KITKAT) {
+            getWindow().getDecorView().setSystemUiVisibility(flags);
+            final View decorView = getWindow().getDecorView();
+            decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
+                @Override
+                public void onSystemUiVisibilityChange(int visibility) {
+                    if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
+                        decorView.setSystemUiVisibility(flags);
+                    }
+                }
+            });
+        }
         pongView = new PongView(this);
         setContentView(pongView);
-        if(getIntent().getBooleanExtra("isServer",false)) {
-            progressDialog = new ProgressDialog(this);
-            progressDialog.show(this, "Realizando conexion", "Espere a que un usuario se conecte");
-        }
+//        if(getIntent().getBooleanExtra("isServer",false)) {
+//            progressDialog = new ProgressDialog(this);
+//            progressDialog.show(this, "Realizando conexion", "Espere a que un usuario se conecte");
+//        }
+        pongView.getLooper().setSensor(new SensorPong(this));
     }
 
     public void dataReceived(JSONObject json){
@@ -47,6 +74,23 @@ public class PongActivity extends AppCompatActivity {
         }
         catch(JSONException e){
             e.printStackTrace();
+        }
+    }
+
+    @SuppressLint("NewApi")
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus)
+    {
+        super.onWindowFocusChanged(hasFocus);
+        if(currentApiVersion >= Build.VERSION_CODES.KITKAT && hasFocus)
+        {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
     }
 
@@ -78,5 +122,11 @@ public class PongActivity extends AppCompatActivity {
 
     public PongView getPongView() {
         return pongView;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        pongView.stop();
     }
 }
