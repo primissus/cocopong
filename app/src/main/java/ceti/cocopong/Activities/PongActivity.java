@@ -4,9 +4,12 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.Formatter;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -128,5 +131,12 @@ public class PongActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         pongView.stop();
+    }
+
+    public String getAddress(){
+        WifiManager wifiMgr = (WifiManager) getSystemService(WIFI_SERVICE);
+        WifiInfo wifiInfo = wifiMgr.getConnectionInfo();
+        int ip = wifiInfo.getIpAddress();
+        return Formatter.formatIpAddress(ip);
     }
 }

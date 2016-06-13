@@ -1,11 +1,16 @@
 package ceti.cocopong.Controladores;
 
+import android.app.Activity;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -25,11 +30,14 @@ public class ServerThread extends Thread {
         this.pongActivity = pongActivity;
     }
 
+    public ServerThread() {
+    }
+
     @Override
     public void run() {
         try {
-            serverSocket = new ServerSocket(8189);
-            socket = serverSocket.accept();
+            Thread.sleep(5000);
+            serverSocket = new ServerSocket(8188);
             //serverSocket.close();
             //pongActivity.dismissProgresDialog();
             pongActivity.getPongView().init();
