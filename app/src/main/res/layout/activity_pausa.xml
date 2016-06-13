@@ -7,43 +7,31 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ceti.cocopong.activities.MainActivity">
     android:background="#000000"
-    tools:context=".Activities.MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/PONG"
-        android:textColor="#FFFF00"
-        android:text="COCOPONG"
-        android:textSize="45dp"
-        android:layout_centerHorizontal="true"
-        android:paddingTop="10dp"/>
+    tools:context="Activities.PausaActivity">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnCrearPartida"
+        android:id="@+id/btnReanudar"
         android:background="#000000"
         android:textColor="#FFFF00"
-        android:text="Crear partida"
-        android:textSize="20dp"
+        android:text="Reanudar"
+        android:textSize="35dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/PONG"
-        android:paddingTop="80dp"/>
+        android:paddingTop="15dp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnUnirPartida"
+        android:id="@+id/btnReiniciar"
         android:background="#000000"
         android:textColor="#FFFF00"
-        android:text="Unirse a una parida"
-        android:textSize="20dp"
-        android:layout_below="@+id/btnCrearPartida"
+        android:text="Reiniciar"
+        android:textSize="35dp"
         android:layout_centerHorizontal="true"
-        android:paddingTop="40dp"/>
+        android:layout_below="@id/btnReanudar"
+        android:paddingTop="15dp"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -51,10 +39,10 @@
         android:id="@+id/btnSalir"
         android:background="#000000"
         android:textColor="#FFFF00"
-        android:textSize="20dp"
         android:text="Salir"
+        android:textSize="35dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/btnUnirPartida"
-        android:paddingTop="40dp"/>
+        android:layout_below="@+id/btnReiniciar"
+        android:paddingTop="15dp"/>
 
 </RelativeLayout>
