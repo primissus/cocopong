@@ -55,7 +55,12 @@ public class Pelota {
         this.visible = visible;
     }
 
-    public int rebotaPelota(int gameWidth, int gameHeight) {
+    public int rebotaPelota(int gameWidth, int gameHeight, Paleta paleta) {
+        if((y + height) >= paleta.getY()) {
+            if((x + height) >= paleta.getX() && (x + height) <= (paleta.getX() + paleta.getWidth())) {
+                dy *= -1;
+            }
+        }
         if ((x + width) >= gameWidth || x <= 0) {
             dx *= -1;
             if (x < 0)
@@ -67,13 +72,14 @@ public class Pelota {
             dy *= -1;
             if (y < 0) {
                 y = 0;
-                return 1;
+                return 1;               //pasó al otro lado
             }
             if (y + width > gameHeight) {
                 y = gameHeight - height;
-                return 2;
+                return 2;               //punto malo
             }
         }
+
         return 0;
     }
 
