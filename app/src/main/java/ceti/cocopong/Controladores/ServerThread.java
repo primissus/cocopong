@@ -1,5 +1,8 @@
 package ceti.cocopong.Controladores;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -35,7 +38,15 @@ public class ServerThread extends Thread {
             pongActivity.dismissProgresDialog();
             pongActivity.getPongView().init();
             while(running){
-
+                String data = receiveData();
+                if(data!=null) {
+                    try {
+                        JSONObject json = new JSONObject(data);
+                        pongActivity.dataReceived(json);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -61,5 +72,13 @@ public class ServerThread extends Thread {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public boolean isRunning() {
+        return running;
+    }
+
+    public void setRunning(boolean running) {
+        this.running = running;
     }
 }

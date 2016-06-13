@@ -17,6 +17,7 @@ public class SensorPong extends AppCompatActivity implements SensorEventListener
     private List<Sensor> sensores;
     private float y=0;
     private int inclinacion;
+
     public SensorPong(){
         SensorManager sm = (SensorManager)getSystemService(SENSOR_SERVICE);
         sensores = sm.getSensorList(android.hardware.Sensor.TYPE_ACCELEROMETER);

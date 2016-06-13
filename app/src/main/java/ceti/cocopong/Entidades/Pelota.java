@@ -9,13 +9,11 @@ public class Pelota {
     private int y;
     private int width;
     private int height;
+    private boolean visible;
     private int dx;
     private int dy;
 
-    public Pelota(int width, int height) {
-        this.width = width;
-        this.height = height;
-    }
+    public Pelota() {}
 
     public int getX() {
         return x;
@@ -49,24 +47,34 @@ public class Pelota {
         this.height = height;
     }
 
-    public void rebotaPelota(int gameWidth, int gameHeight) {
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+
+    public int rebotaPelota(int gameWidth, int gameHeight) {
         if ((x + width) >= gameWidth || x <= 0) {
-            dx += -1;
+            dx *= -1;
             if (x < 0)
                 x = 0;
             if (x + width > gameWidth)
                 x = gameWidth - this.height;
         }
-
         if ((y + height) >= this.getHeight() || y <= 0) {
-            y += -1;
+            dy *= -1;
             if (y < 0) {
                 y = 0;
+                return 1;
             }
             if (y + width > gameHeight) {
                 y = gameHeight - height;
+                return 2;
             }
         }
+        return 0;
     }
 
     public void cambiaPosicion(){

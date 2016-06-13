@@ -8,9 +8,18 @@ import android.graphics.RectF;
 public class Paleta {
 
     private RectF paleta;
+    private int speed;
 
-    public Paleta(int x, int y, int width, int height) {
+    public void setBounds(int x, int y, int width, int height) {
         paleta = new RectF(x,y,x+width,y+height);
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public RectF getPaleta() {
+        return paleta;
     }
 
     public void changePos(int x, int y){
@@ -21,9 +30,19 @@ public class Paleta {
         paleta.set(x,y,x+width, y+height);
     }
 
-    public void changeX(int x){
-        int width;
-        width = (int) paleta.width();
-        paleta.set(x,paleta.top,x+width,paleta.bottom);
+    public void move(int movement, int gameWidth){
+        int width = (int) paleta.width();
+        if(movement<0 && (paleta.left-movement*speed)<=0){
+            paleta.left=0;
+            paleta.right=width;
+        }
+        else if(movement>0 && (paleta.right+movement*speed)>=gameWidth){
+            paleta.right=gameWidth;
+            paleta.left=gameWidth-width;
+        }
+        else{
+            paleta.left-=movement*speed;
+            paleta.right-=movement*speed;
+        }
     }
 }
