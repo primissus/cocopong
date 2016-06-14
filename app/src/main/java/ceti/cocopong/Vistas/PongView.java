@@ -138,7 +138,7 @@ public class PongView extends SurfaceView{
     public void receivePelota(int x, boolean side){
         pelota.setX(x*getWidth()/100);
         pelota.setVisible(true);
-        pelota.setDy(this.getHeight()/100);
+        pelota.setDy(this.getHeight()*2/100);
         pelota.setDx((this.getWidth()/100)*((side)?1:-1));
     }
 
@@ -183,14 +183,14 @@ public class PongView extends SurfaceView{
         pelota.setX(rnd.nextInt(this.getWidth()*9/10));
         pelota.setY(0);
         pelota.setDx((this.getWidth()/100)*((rnd.nextBoolean())?1:-1));
-        pelota.setDy(this.getHeight()/100);
+        pelota.setDy(this.getHeight()*2/100);
     }
 
     private void placePelota(int x){
         pelota.setX(x);
         pelota.setY(0);
         pelota.setDx(this.getWidth()/100);
-        pelota.setDy(this.getHeight()/100);
+        pelota.setDy(this.getHeight()*2/100);
     }
 
     public void sendPelota(){
