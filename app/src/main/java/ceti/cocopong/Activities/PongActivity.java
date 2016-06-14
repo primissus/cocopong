@@ -52,10 +52,8 @@ public class PongActivity extends AppCompatActivity {
         }
         pongView = new PongView(this);
         setContentView(pongView);
-//        if(getIntent().getBooleanExtra("isServer",false)) {
-//            progressDialog = new ProgressDialog(this);
-//            progressDialog.show(this, "Realizando conexion", "Espere a que un usuario se conecte");
-//        }
+        progressDialog = new ProgressDialog(this);
+        progressDialog.show(this, "Realizando conexion", "Espere a que un usuario se conecte");
         pongView.getLooper().setSensor(new SensorPong(this));
     }
 

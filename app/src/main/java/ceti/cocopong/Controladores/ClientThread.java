@@ -29,9 +29,7 @@ public class ClientThread extends Thread {
     public void run() {
         try {
             socket = new Socket("192.168.43.1",8188);
-//            socket = new Socket();
-//            socket.bind(null);
-//            socket.connect((new InetSocketAddress("192.168.43.1", 8189)), 500);
+            pongActivity.dismissProgresDialog();
             pongActivity.getPongView().init();
             while(running){
                 String data = receiveData();
