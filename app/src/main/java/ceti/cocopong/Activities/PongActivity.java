@@ -65,7 +65,7 @@ public class PongActivity extends AppCompatActivity {
                     pongView.setPelotaX(json.getInt("xPos"));
                     break;
                 case 2:     //Recibir pelota
-                    pongView.receivePelota(json.getInt("xPos"));
+                    pongView.receivePelota(json.getInt("xPos"), json.getBoolean("side"));
                     break;
                 case 3:
                     pongView.setPuntosOpenente(pongView.getPuntosOpenente()+1);
