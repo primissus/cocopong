@@ -63,7 +63,8 @@ public class Pelota {
                 y = paleta.getY()-height;
             }
             if(x >= (paleta.getX() + (paleta.getWidth()) / 2) && (x + width) <= (paleta.getX() + paleta.getWidth())){
-
+                dy *= -1;
+                y = paleta.getX() - height;
             }
         }
         else {
