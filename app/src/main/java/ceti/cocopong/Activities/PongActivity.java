@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
@@ -69,11 +70,23 @@ public class PongActivity extends AppCompatActivity {
                     break;
                 case 3:
                     pongView.setPuntosOpenente(pongView.getPuntosOpenente()+1);
+                    break;
+                case 4:
+                    pongView.stop();
+                    pongView.closeConnections();
+                    finJuego("Ganaste");
             }
         }
         catch(JSONException e){
             e.printStackTrace();
         }
+    }
+
+    public void finJuego(String mensaje){
+        Intent intent = new Intent(this, ResultadoActivity.class);
+        intent.putExtra("Mensaje",mensaje);
+        startActivity(intent);
+        finish();
     }
 
     @SuppressLint("NewApi")
@@ -136,13 +149,7 @@ public class PongActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+        pongView.closeConnections();
         pongView.stop();
-    }
-
-    public String getAddress(){
-        WifiManager wifiMgr = (WifiManager) getSystemService(WIFI_SERVICE);
-        WifiInfo wifiInfo = wifiMgr.getConnectionInfo();
-        int ip = wifiInfo.getIpAddress();
-        return Formatter.formatIpAddress(ip);
     }
 }

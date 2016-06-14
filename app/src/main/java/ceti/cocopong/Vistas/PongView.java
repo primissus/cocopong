@@ -1,6 +1,7 @@
 package ceti.cocopong.Vistas;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
@@ -246,6 +247,34 @@ public class PongView extends SurfaceView{
 
     public void setPuntos(int puntos) {
         this.puntos = puntos;
+        if(puntos==5){
+            sendPerder();
+            stop();
+            closeConnections();
+            activity.finJuego("Perdiste");
+        }
+    }
+
+    public void sendPerder(){
+        JSONObject json = new JSONObject();
+        try {
+            json.put("code",4);
+            if(isServer)
+                server.sendData(json.toString());
+            else
+                client.sendData(json.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void closeConnections(){
+        if(isServer){
+            server.close();
+        }
+        else{
+            client.close();
+        }
     }
 
     public int getPuntosOpenente() {
