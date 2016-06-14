@@ -62,12 +62,14 @@ public class PongView extends SurfaceView{
                 if(isServer){
                     server = new ServerThread(activity);
                     server.start();
+                    server.setRunning(true);
                 }
                 else{
                     client = new ClientThread(activity);
                     client.start();
+                    client.setRunning(true);
                 }
-                activity.showDialog();
+                //activity.showDialog();
             }
 
             @Override
@@ -81,6 +83,7 @@ public class PongView extends SurfaceView{
             }
         });
         looper = new GameLooper(this, pelota, paleta);
+        looper.setRunning(true);
     }
 
 

@@ -116,7 +116,12 @@ public class PongActivity extends AppCompatActivity {
     }
 
     public void dismissProgresDialog(){
-        progressDialog.dismiss();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.dismiss();
+            }
+        });
     }
 
     public void showDialog(){

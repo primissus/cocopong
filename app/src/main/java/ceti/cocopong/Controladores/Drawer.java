@@ -51,7 +51,7 @@ public class Drawer {
 
     public void drawTime(Canvas canvas, int time){
         canvas.drawRGB(0,0,0);
-        canvas.drawText(String.valueOf(time), pelota.getHeight(), paleta.getWidth()*5/2+timePaint.getTextSize(), timePaint);
+        canvas.drawText(String.valueOf(time), paleta.getWidth()*5/2+timePaint.getTextSize(), pelota.getHeight(), timePaint);
     }
 
     public void drawPoints(Canvas canvas,int points, int openentPoints){
