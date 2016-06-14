@@ -67,6 +67,7 @@ public class PongView extends SurfaceView{
                     client = new ClientThread(activity);
                     client.start();
                 }
+                activity.showDialog();
             }
 
             @Override

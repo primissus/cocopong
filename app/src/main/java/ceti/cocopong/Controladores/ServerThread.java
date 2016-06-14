@@ -35,8 +35,8 @@ public class ServerThread extends Thread {
         try {
             serverSocket = new ServerSocket(8188);
             socket = serverSocket.accept();
-            //serverSocket.close();
-            //pongActivity.dismissProgresDialog();
+            serverSocket.close();
+            pongActivity.dismissProgresDialog();
             pongActivity.getPongView().init();
             while(running){
                 String data = receiveData();
