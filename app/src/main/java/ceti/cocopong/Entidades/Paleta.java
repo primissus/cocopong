@@ -32,17 +32,15 @@ public class Paleta {
 
     public void move(int movement, int gameWidth){
         int width = (int) paleta.width();
-        if(movement<0 && (paleta.left-movement*speed)<=0){
+        paleta.left+=movement*speed;
+        paleta.right+=movement*speed;
+        if(movement<0 && (paleta.left)<=0){
             paleta.left=0;
             paleta.right=width;
         }
-        else if(movement>0 && (paleta.right+movement*speed)>=gameWidth){
+        else if(movement>0 && (paleta.right)>=gameWidth){
             paleta.right=gameWidth;
             paleta.left=gameWidth-width;
-        }
-        else{
-            paleta.left-=movement*speed;
-            paleta.right-=movement*speed;
         }
     }
 

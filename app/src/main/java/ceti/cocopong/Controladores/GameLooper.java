@@ -31,7 +31,7 @@ public class GameLooper extends Thread {
                 pelota.cambiaPosicion();
                 switch(pelota.rebotaPelota(view.getWidth(), view.getHeight(), paleta)){
                     case 0:
-                        view.sendXPelota(pelota.getX()/view.getWidth());
+                        view.sendXPelota(pelota.getX()*100/view.getWidth());
                         break;
                     case 1:
                         view.sendPelota();
@@ -53,7 +53,7 @@ public class GameLooper extends Thread {
                 paleta.move(movement, view.getWidth());
             view.draw();
             try {
-                Thread.sleep(30);
+                Thread.sleep(33);
             } catch (InterruptedException e) {
 
 

@@ -91,6 +91,7 @@ public class PongView extends SurfaceView{
         if(isServer){
             Random rnd = new Random();
             pelota.setVisible(rnd.nextBoolean());
+            pelota.setVisible(true);
             sendTurn(!pelota.isVisible());
             initPelota(pelota.isVisible());
         }
@@ -120,6 +121,10 @@ public class PongView extends SurfaceView{
         try {
             json.put("code",1);
             json.put("xPos",x);
+            if(isServer)
+                server.sendData(json.toString());
+            else
+                client.sendData(json.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -174,22 +179,26 @@ public class PongView extends SurfaceView{
         Random rnd = new Random();
         pelota.setX(rnd.nextInt(this.getWidth()*9/10));
         pelota.setY(0);
-        pelota.setDx((this.getWidth()*6/100)*((rnd.nextBoolean())?1:-1));
-        pelota.setDy(this.getHeight()*4/100);
+        pelota.setDx((this.getWidth()/100)*((rnd.nextBoolean())?1:-1));
+        pelota.setDy(this.getHeight()/100);
     }
 
     private void placePelota(int x){
         pelota.setX(x);
         pelota.setY(0);
-        pelota.setDx(this.getWidth()*6/100);
-        pelota.setDy(this.getHeight()*4/100);
+        pelota.setDx(this.getWidth()/100);
+        pelota.setDy(this.getHeight()/100);
     }
 
     public void sendPelota(){
         JSONObject json = new JSONObject();
         try {
-            json.put("code",1);
+            json.put("code",2);
             json.put("xPos",pelota.getX()/getWidth());
+            if(isServer)
+                server.sendData(json.toString());
+            else
+                client.sendData(json.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -199,6 +208,10 @@ public class PongView extends SurfaceView{
         JSONObject json = new JSONObject();
         try {
             json.put("code",3);
+            if(isServer)
+                server.sendData(json.toString());
+            else
+                client.sendData(json.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -221,6 +234,7 @@ public class PongView extends SurfaceView{
         pelota.setHeight(h/10);
         pelota.setWidth(h/10);
         paleta.setBounds(w*4/10,h*9/10,w/5,h/10);
+        paleta.setSpeed(w*2/100);
     }
 
     public int getPuntos() {

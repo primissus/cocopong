@@ -59,25 +59,23 @@ public class Pelota {
         if((y + height) >= paleta.getY()) {
             if(x >= paleta.getX() && (x + height) <= (paleta.getX() + paleta.getWidth())) {
                 dy *= -1;
-                x = paleta.getY()-height;
+                y = paleta.getY()-height;
             }
         }
         else {
-            if ((x + width) >= gameWidth || x <= 0) {
+            if (((x + width) >= gameWidth && dx>0) || (x <= 0 && dx<0)) {
                 dx *= -1;
                 if (x < 0)
                     x = 0;
                 if (x + width > gameWidth)
                     x = gameWidth - this.height;
             }
-            if ((y + height) >= this.getHeight() || y <= 0) {
-                dy *= -1;
-                if (y < 0) {
+            if (((y + height) >= gameHeight && dy>0) || (y <= 0 && dy<0)) {
+                if (y <= 0) {
                     y = 0;
                     return 1;               //pasó al otro lado
                 }
-                if (y + width > gameHeight) {
-                    y = gameHeight - height;
+                if (y + width >= gameHeight) {
                     return 2;               //punto malo
                 }
             }
