@@ -70,15 +70,13 @@ public class Pelota {
                 if (x + width > gameWidth)
                     x = gameWidth - this.width;
             }
-            if (((y + height) >= gameHeight && dy>0) || (y <= 0 && dy<0)) {
-                if (y <= 0) {
-                    y = 0;
-                    return 1;               //pasó al otro lado
-                }
-                if (y + height >= gameHeight) {
-                    return 2;               //punto malo
-                }
+            if ( y <= 0 && dy<0) {
+                y = 0;
+                return 1;               //pasó al otro lado
             }
+        }
+        if((y + height) >= gameHeight && dy>0){
+            return 2;
         }
         return 0;
     }
