@@ -57,9 +57,13 @@ public class Pelota {
 
     public int rebotaPelota(int gameWidth, int gameHeight, Paleta paleta) {
         if((y + height) >= paleta.getY()) {
-            if(x >= paleta.getX() && (x + width) <= (paleta.getX() + paleta.getWidth())) {
+            if(x >= paleta.getX() && (x + width) <= paleta.getX() + (paleta.getWidth())/2) {
                 dy *= -1;
+                dx *= -1;
                 y = paleta.getY()-height;
+            }
+            if(x >= (paleta.getX() + (paleta.getWidth()) / 2) && (x + width) <= (paleta.getX() + paleta.getWidth())){
+
             }
         }
         else {
