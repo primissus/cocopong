@@ -28,16 +28,17 @@ public class ServerThread extends Thread {
 
     public ServerThread(PongActivity pongActivity) {
         this.pongActivity = pongActivity;
-    }
-
-    public ServerThread() {
+        try {
+            serverSocket = new ServerSocket(8188);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void run() {
         try {
-            Thread.sleep(5000);
-            serverSocket = new ServerSocket(8188);
+            socket = serverSocket.accept();
             //serverSocket.close();
             //pongActivity.dismissProgresDialog();
             pongActivity.getPongView().init();

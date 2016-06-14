@@ -49,21 +49,41 @@ public class PongView extends SurfaceView{
     public PongView(Context context) {
         super(context);
         holder = getHolder();
-        activity = (PongActivity) context;
+        activity = (PongActivity)context;
         user = activity.getIntent().getStringExtra("Usuario");
         isServer = activity.getIntent().getBooleanExtra("isServer", false);
         pelota = new Pelota();
         paleta = new Paleta();
         puntos = 0;
         puntosOpenente = 0;
-        if(isServer){
-            server = new ServerThread(activity);
-            server.start();
-        }
-        else{
-            client = new ClientThread(activity);
-            client.start();
-        }
+        holder.addCallback(new SurfaceHolder.Callback() {
+            @Override
+            public void surfaceCreated(SurfaceHolder holder) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(isServer){
+                            server = new ServerThread(activity);
+                            server.start();
+                        }
+                        else{
+                            client = new ClientThread(activity);
+                            client.start();
+                        }
+                    }
+                }).start();
+            }
+
+            @Override
+            public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+
+            }
+
+            @Override
+            public void surfaceDestroyed(SurfaceHolder holder) {
+
+            }
+        });
         looper = new GameLooper(this, pelota, paleta);
     }
 
