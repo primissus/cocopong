@@ -59,9 +59,6 @@ public class PongView extends SurfaceView{
         holder.addCallback(new SurfaceHolder.Callback() {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
-                looper = new GameLooper(PongView.this, pelota, paleta);
-                looper.setRunning(true);
-                looper.setSensor(activity.createSensor());
                 if(isServer){
                     server = new ServerThread(activity);
                     server.start();
@@ -85,6 +82,8 @@ public class PongView extends SurfaceView{
 
             }
         });
+        looper = new GameLooper(this, pelota, paleta);
+        looper.setRunning(true);
     }
 
 
@@ -138,6 +137,8 @@ public class PongView extends SurfaceView{
     public void receivePelota(int x){
         pelota.setX(x*getWidth()/100);
         pelota.setVisible(true);
+        pelota.setDy(pelota.getDy()*-1);
+
     }
 
     private void sendTurn(boolean openentsTurn){
