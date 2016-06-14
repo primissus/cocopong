@@ -59,19 +59,14 @@ public class PongView extends SurfaceView{
         holder.addCallback(new SurfaceHolder.Callback() {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if(isServer){
-                            server = new ServerThread(activity);
-                            server.start();
-                        }
-                        else{
-                            client = new ClientThread(activity);
-                            client.start();
-                        }
-                    }
-                }).start();
+                if(isServer){
+                    server = new ServerThread(activity);
+                    server.start();
+                }
+                else{
+                    client = new ClientThread(activity);
+                    client.start();
+                }
             }
 
             @Override

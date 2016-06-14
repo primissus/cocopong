@@ -46,7 +46,7 @@ public class UnirPartidaActivity extends AppCompatActivity {
                 if(!txtNombreUsuario.getText().toString().isEmpty()) {
                     intent = new Intent(UnirPartidaActivity.this, PongActivity.class);
                     intent.putExtra("Usuario", txtNombreUsuario.getText().toString());
-                    intent.putExtra("isServer", true);
+                    intent.putExtra("isServer", false);
                     startActivity(intent);
                     finish();
                 }
