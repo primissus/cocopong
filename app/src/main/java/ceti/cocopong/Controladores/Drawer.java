@@ -40,12 +40,14 @@ public class Drawer {
     }
 
     public void draw(Canvas canvas){
-        canvas.drawRGB(0,0,0);
-        canvas.drawRect(paleta.getPaleta(),generalPaint);
-        if(pelota.isVisible())
-            canvas.drawCircle(pelota.getX()+pelota.getWidth()/2,pelota.getY()+pelota.getHeight()/2,pelota.getWidth()/2,generalPaint);
-        else
-            canvas.drawRect(pelota.getX(),0, pelota.getX()+pelota.getWidth(), pelota.getHeight()/5, generalPaint);
+        if(canvas!=null) {
+            canvas.drawRGB(0, 0, 0);
+            canvas.drawRect(paleta.getPaleta(), generalPaint);
+            if (pelota.isVisible())
+                canvas.drawCircle(pelota.getX() + pelota.getWidth() / 2, pelota.getY() + pelota.getHeight() / 2, pelota.getWidth() / 2, generalPaint);
+            else
+                canvas.drawRect(pelota.getX(), 0, pelota.getX() + pelota.getWidth(), pelota.getHeight() / 5, generalPaint);
+        }
     }
 
 

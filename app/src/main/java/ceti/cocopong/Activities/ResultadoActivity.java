@@ -18,12 +18,9 @@ public class ResultadoActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_resultado);
-
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_resultado);
         btnSalir = (Button) findViewById(R.id.btnSalir);
         tvMensaje = (TextView) findViewById(R.id.tvMensaje);
 
