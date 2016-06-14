@@ -52,6 +52,12 @@ public class GameLooper extends Thread {
             if((movement = sensor.getInclinacion())!=0)
                 paleta.move(movement, view.getWidth());
             view.draw();
+            try {
+                Thread.sleep(30);
+            } catch (InterruptedException e) {
+
+
+            }
         }
     }
 
