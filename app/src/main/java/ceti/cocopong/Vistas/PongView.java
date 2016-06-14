@@ -59,6 +59,9 @@ public class PongView extends SurfaceView{
         holder.addCallback(new SurfaceHolder.Callback() {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
+                looper = new GameLooper(PongView.this, pelota, paleta);
+                looper.setRunning(true);
+                looper.setSensor(activity.createSensor());
                 if(isServer){
                     server = new ServerThread(activity);
                     server.start();
@@ -82,8 +85,6 @@ public class PongView extends SurfaceView{
 
             }
         });
-        looper = new GameLooper(this, pelota, paleta);
-        looper.setRunning(true);
     }
 
 

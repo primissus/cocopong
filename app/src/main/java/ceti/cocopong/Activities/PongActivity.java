@@ -52,7 +52,6 @@ public class PongActivity extends AppCompatActivity {
         }
         pongView = new PongView(this);
         setContentView(pongView);
-        pongView.getLooper().setSensor(new SensorPong(this));
     }
 
     public void dataReceived(JSONObject json){
@@ -144,5 +143,9 @@ public class PongActivity extends AppCompatActivity {
         WifiInfo wifiInfo = wifiMgr.getConnectionInfo();
         int ip = wifiInfo.getIpAddress();
         return Formatter.formatIpAddress(ip);
+    }
+
+    public SensorPong createSensor(){
+        return new SensorPong(this);
     }
 }
